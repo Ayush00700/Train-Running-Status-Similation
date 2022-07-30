@@ -2,12 +2,12 @@
 
 # LIVE TRAIN RUNNING STATUS (DBS_PR_14)    
   
-Ayush Agarwal (2019B4A70652P) 
-Jayesh Singh (2018A8PS0468P)
+`Team Members`
+
+- [Ayush Agarwal (2019B4A70652P)](https://www.linkedin.com/in/ayush-agarwal-509958188/) 
+- Jayesh Singh (2018A8PS0468P)
 
 [Drive Link for the Video](https://drive.google.com/drive/folders/1YpUdIXNk3ewIuDtweyvybV1Vcywft79S?usp=sharing)
-<p align="right"> (<a> [Drive Link for the Video](https://drive.google.com/drive/folders/1YpUdIXNk3ewIuDtweyvybV1Vcywft79S?usp=sharing)</a>) </p>
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -28,7 +28,7 @@ Jayesh Singh (2018A8PS0468P)
         <li><a href="#schema-design">Schema Design</a></li>
         <li><a href="#data-normalization-and-design">Data Normalization and Design</a></li>
         <li><a href="#list-of-tables-required">List of tables required</a></li>
-        <li><a href="#additional-components-procedures-transactions-etc">Additional components (Procedures, Transactions, etc)</a></li>
+        <li><a href="#additional-components">Additional components (Procedures, Transactions, etc)</a></li>
       </ul>
     </li>
     <li>
