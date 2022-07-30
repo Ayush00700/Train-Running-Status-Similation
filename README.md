@@ -77,13 +77,14 @@ For the given model we did not add the feature where the admin or the Indian Gov
 
 ### ER Diagrams
 
-Image
+<img src="/images/er.png" alt="ER Diagram">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Schema Design
 
-Image
+<img src="/images/schema.png" alt="Schema Diagram">
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
