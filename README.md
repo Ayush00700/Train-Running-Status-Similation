@@ -1,14 +1,21 @@
 <div id="top"></div>
 
+# LIVE TRAIN RUNNING STATUS (DBS_PR_14)    
+  
+  Ayush Agarwal (2019B4A70652P) 
+  Jayesh Singh (2018A8PS0468P)
+
+[Drive Link for the Video](https://drive.google.com/drive/folders/1YpUdIXNk3ewIuDtweyvybV1Vcywft79S?usp=sharing)
+
 
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>s
   <ol>
     <li>  
-      <a href="#about-the-project">System requirement specification (SRS)</a>
+      <a href="#system-requirement-specification-(srs)">System requirement specification (SRS)</a>
       <ul>
-        <li><a href="#built-with">Database and SQL files</a></li>
+        <li><a href="#database-and-sql-files">Database and SQL files</a></li>
         <li><a href="#built-with">Scope of the Project</a></li>
         <li><a href="#built-with">Model Assumptions</a></li>
       </ul>
@@ -92,9 +99,9 @@ As mentioned earlier in the documentation, this project serves to fulfill the ba
 Total 3 tables are required, since we cannot reduce it further because
 the relationship is M:N along with total participation.
 
-- * Table1: train(train_no, train_name, start_location, end_location)
-- * Table2: station (station_no, station_name,station_city, no_of_platforms)
-- * Table3: train_schedule(train_no, station_no,arrival_time,dept_time,platform_no,arrives_passes, distance)
+- Table1: train(train_no, train_name, start_location, end_location)
+- Table2: station (station_no, station_name,station_city, no_of_platforms)
+- Table3: train_schedule(train_no, station_no,arrival_time,dept_time,platform_no,arrives_passes, distance)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -167,16 +174,16 @@ npm install
 ```sh
 node server
 ```
-	Then open `localhost/`
+Then open `localhost/`
 
-`SQL: Backend`
+SQL: `Backend`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ### Source of data collection from Data Scraping
 
-Data was collected from [trainman.in.]
+Data was collected from [trainman.in](trainman.in).
 It was scraped using a browser extension, [DataMiner](https://dataminer.io/)
 
 
@@ -195,17 +202,17 @@ It was scraped using a browser extension, [DataMiner](https://dataminer.io/)
 ### Contribution of each team member
 
 - Ayush :
-  - * Formation of 3 Tables 
-  - * Formation of Procedures and transactions
-  - * Documentation
-  - * Debugging
+  - Formation of 3 Tables 
+  - Formation of Procedures and transactions
+  - Documentation
+  - Debugging
 
 - Jayesh:
-  - * Formation of Views,
-  - * Collection and scraping of data,
-  - * ER Model Specifications,
-  - * Frontend Development, 
-  - * Video Editing.
+  - Formation of Views,
+  - Collection and scraping of data,
+  - ER Model Specifications,
+  - Frontend Development, 
+  - Video Editing.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
