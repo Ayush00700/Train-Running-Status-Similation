@@ -38,190 +38,181 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## System requirement specification (SRS)
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+### Database and SQL files
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
+The given project aims to capture the main ideas of handling a train running status system. The following documentation serves to provide sufficient guidelines to follow while testing and evaluating the project. The attached code consists of a single SQL file containing all the required queries, data definition, procedures, functions etc. The order in which the components of the SQL file has been kept is the same as mentioned in the project guidelines of the course `CS F212 Database Systems and Concepts, Fall Semester 2022`.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+### Scope of the Project
 
-### Built With
+The scope of the project is to simply capture the basic requirements of a real-life simulation of an online movie ticket reservation system. The requirements that the following system fulfills is that of storing the important data in a non-redundant manner. The intricacies of the database such as normalization and schemas has been discussed ahead in the next section. Since an online live running status system is accessible to multiple users, this necessitates the use of transactions to take care of consistency of the database. Hence all the queries as per the requirements and intuition derived from real life scenarios have been handled using a suitable mode that is either concurrently handled or not. The system that we have designed is also compatible with the frontend framework and has been expanded according to the needs of the user and could be expanded further.
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+### Model Assumptions
+
+For the given model we did not add the feature where the admin or the Indian Government can add new trains and stations. It has been assumed that the sql only serves the purpose of the client who wants to query the running status of trains and the whereabouts of different stations. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## System Modeling
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+### ER Diagrams
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+Image
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### Schema Design
+
+Image
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+### Data Normalization and Design
+
+As mentioned earlier in the documentation, this project serves to fulfill the basic requirements of a train running live status database system. Coming to the data model assumptions first, we have a `train`  table consisting of the necessary details to distinguish a train entity. Followed by that we have a `station` table that stores all the train railway stations present in India , a relation between them called `train_schedule` database that captures all the trains and their respective arrival and departure time in a station. Every `train_schedule` has multiple `train` data as a train travels multiple stations and every station has multiple trains arriving at its stop. So the relation `train_schedule` is many-many relation. Both trains and stations are strong entities and have their own primary keys respectively. Hence, even the relation `train_schedule` is a strong-entity type relation. Also the data says that there is total participation of data.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+### List of Tables required
+
+Total 3 tables are required, since we cannot reduce it further because
+the relationship is M:N along with total participation.
+
+- * Table1: train(train_no, train_name, start_location, end_location)
+- * Table2: station (station_no, station_name,station_city, no_of_platforms)
+- * Table3: train_schedule(train_no, station_no,arrival_time,dept_time,platform_no,arrives_passes, distance)
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+### List of Views used
+
+-- -----------------------------------------------------
+-- View `mydb`.`station_schedule` : Used to create a view for a particular station which contains all the trains that will arrive at that particular station with its time.
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- View `mydb`.`passes_by` :  Used to find all the stations that a train passes through and not stops at in its journey.
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- View `mydb`.`stops_at` : Used to find all the stations that a train stops at and not passes through in its journey.
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- View `mydb`.`train_timeline` : Used to create a view for a particular train determining all the stations and timeline of a particular train. 
+-- -----------------------------------------------------
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+### Additional components
+
+Procedures used are
+
+-- -----------------------------------------------------
+-- `procedure ETA`: To find the expected arrival time of a train from a particular station.
+-- -----------------------------------------------------
+-----------------------------------------------------
+-- `procedure ETD` : To find the expected departure time of a train from a particular station.
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- `procedure available_trains`: To find all possible trains that stops between the two given stations.
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- `procedure all_train_stops`:  Used to create a view for a particular train passed as parameter determining all the stations and timeline of a particular train.
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- `procedure station_schedule`: Used to create a view for a particular station passed as parameter which contains all the trains that will arrive at that particular station with its time.
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- `procedure routes` : To find all possible ways of connection between station A and station B.
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- `procedure train_status` : To fetch the current System Time and estimate where the train is actually present.
+-- -----------------------------------------------------
+
+
+Transactions are used for Handling concurrency with commit statements at the end of every procedures.
+As mentioned earlier, there is no insertion or deletion or updation operation in this live running station project, therefore the use of triggers become obsolete. 
+Also the concurrency is handled on its own as there are no write operations involved in the transaction. Therefore multiple users can query the data at the same time without any delay.
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Environment Setup
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### How to setup the running environment to code
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Website Run following commands in root folder after pulling the repository from git:
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+```sh
+npm install
+```  
 
+```sh
+node server
+```
+	Then open `localhost/`
 
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+`SQL: Backend`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+### Source of data collection from Data Scraping
 
-<!-- CONTRIBUTING -->
-## Contributing
+Data was collected from [trainman.in.]
+It was scraped using a browser extension, [DataMiner](https://dataminer.io/)
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+### Check SQL and Node versions
 
-<!-- LICENSE -->
-## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+`My SQL workbench version: 8.0.28 build (Community Edition)`
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+### Contribution of each team member
 
-<!-- CONTACT -->
-## Contact
+- Ayush :
+  - * Formation of 3 Tables 
+  - * Formation of Procedures and transactions
+  - * Documentation
+  - * Debugging
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+- Jayesh:
+  - * Formation of Views,
+  - * Collection and scraping of data,
+  - * ER Model Specifications,
+  - * Frontend Development, 
+  - * Video Editing.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+### Video Link
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[Drive Link for the Video](https://drive.google.com/drive/folders/1YpUdIXNk3ewIuDtweyvybV1Vcywft79S?usp=sharing)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
