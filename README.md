@@ -2,42 +2,43 @@
 
 # LIVE TRAIN RUNNING STATUS (DBS_PR_14)    
   
-  Ayush Agarwal (2019B4A70652P) 
-  Jayesh Singh (2018A8PS0468P)
+Ayush Agarwal (2019B4A70652P) 
+Jayesh Singh (2018A8PS0468P)
 
 [Drive Link for the Video](https://drive.google.com/drive/folders/1YpUdIXNk3ewIuDtweyvybV1Vcywft79S?usp=sharing)
+<p align="right"> (<a> [Drive Link for the Video](https://drive.google.com/drive/folders/1YpUdIXNk3ewIuDtweyvybV1Vcywft79S?usp=sharing)</a>) </p>
 
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>s
+  <summary>Table of Contents</summary>
   <ol>
     <li>  
-      <a href="#system-requirement-specification-(srs)">System requirement specification (SRS)</a>
+      <a href="#system-requirement-specification-srs">System requirement specification (SRS)</a>
       <ul>
         <li><a href="#database-and-sql-files">Database and SQL files</a></li>
-        <li><a href="#built-with">Scope of the Project</a></li>
-        <li><a href="#built-with">Model Assumptions</a></li>
+        <li><a href="#scope-of-the-project">Scope of the Project</a></li>
+        <li><a href="#model-assumptions">Model Assumptions</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">System Modeling</a>
+      <a href="#system-modelling">System Modelling</a>
       <ul>
-        <li><a href="#prerequisites">ER Diagrams</a></li>
-        <li><a href="#installation">Schema Design</a></li>
-        <li><a href="#installation">Data Normalization and Design</a></li>
-        <li><a href="#installation">List of tables required</a></li>
-        <li><a href="#installation">Additional components (Procedures, Transactions, etc)</a></li>
+        <li><a href="#er-diagrams">ER Diagrams</a></li>
+        <li><a href="#schema-design">Schema Design</a></li>
+        <li><a href="#data-normalization-and-design">Data Normalization and Design</a></li>
+        <li><a href="#list-of-tables-required">List of tables required</a></li>
+        <li><a href="#additional-components-procedures-transactions-etc">Additional components (Procedures, Transactions, etc)</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Environment Setup</a>
+      <a href="#environment-setup">Environment Setup</a>
       <ul>
-        <li><a href="#prerequisites">How to setup the running environment to code</a></li>
-        <li><a href="#installation">Source of data collection from Data Scraping</a></li>
-        <li><a href="#installation">Check SQL and Node versions</a></li>
-        <li><a href="#installation">Contribution of each team member</a></li>
-        <li><a href="#installation">Video Link</a></li>
+        <li><a href="#how-to-setup-the-running-environment-to-code">How to setup the running environment to code</a></li>
+        <li><a href="#source-of-data-collection-from-data-scrapping">Source of data collection from Data Scraping</a></li>
+        <li><a href="#check-sql-and-node-versions">Check SQL and Node versions</a></li>
+        <li><a href="#contribution-of-each-team-member">Contribution of each team member</a></li>
+        <li><a href="#video-link">Video Link</a></li>
       </ul>
     </li>
   </ol>
